@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="level0">#8A8A8A</color>
+    <color name="level1">#27E640</color>
+    <color name="level2">#A0ED1A</color>
+    <color name="level3">#D2F011</color>
+    <color name="level4">#EBDC0E</color>
+    <color name="level5">#EBBE0E</color>
+    <color name="level6">#EB8110</color>
+    <color name="level7">#EB3810</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="ics">#33B5E5</color>
+    <color name="widgetbg">#262626</color>
+    <color name="widgetborder">#636161</color>
+	
+</resources>

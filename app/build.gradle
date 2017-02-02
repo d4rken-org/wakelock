@@ -1,0 +1,30 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 7
+    buildToolsVersion "25.0.2"
+
+    defaultConfig {
+        applicationId "eu.thedarken.wl"
+        minSdkVersion 7
+        targetSdkVersion 7
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles 'proguard.cfg'
+        }
+    }
+    productFlavors {
+        free {
+            applicationIdSuffix ""
+            versionNameSuffix ""
+        }
+        donate {
+            applicationIdSuffix "donate"
+            versionNameSuffix "-donate"
+        }
+    }
+
+}
