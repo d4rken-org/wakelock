@@ -5,9 +5,11 @@ android {
     buildToolsVersion "25.0.2"
 
     defaultConfig {
-        applicationId "eu.thedarken.wl"
         minSdkVersion 7
         targetSdkVersion 7
+
+        versionCode 9
+        versionName "2.2"
     }
 
     buildTypes {
@@ -18,12 +20,12 @@ android {
     }
     productFlavors {
         free {
-            applicationIdSuffix ""
-            versionNameSuffix ""
+            applicationId "eu.thedarken.wl"
+            versionNameSuffix "-f"
         }
         donate {
-            applicationIdSuffix "donate"
-            versionNameSuffix "-donate"
+            applicationId "eu.thedarken.wldonate"
+            versionNameSuffix "-d"
         }
     }
 

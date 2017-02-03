@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Wake Lock - Donate Version</string>
+    <string name="about_text"><![CDATA[This app allows you to acquire wakelocks from PowerManager\n\nThank you for purchasing this version!\n\nReach me under support@darken.eu]]></string>
+</resources>

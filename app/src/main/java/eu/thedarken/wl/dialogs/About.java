@@ -8,35 +8,41 @@ import android.net.Uri;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import eu.thedarken.wl.BuildConfig;
 import eu.thedarken.wl.R;
 
 public class About extends Dialog {
 
-	public About(Context context) {
-		super(context);
+    public About(Context context) {
+        super(context);
 
-		setContentView(R.layout.dialog_about);
-		String versName = "";
-		try {
-			versName = getContext().getPackageManager().getPackageInfo(getContext().getPackageName(), 0).versionName;
-		} catch (NameNotFoundException e) {
-			e.printStackTrace();
-		}
-		setTitle("WakeLock " + versName);
-		setCancelable(true);
+        setContentView(R.layout.dialog_about);
+        String versName = "";
+        try {
+            versName = getContext().getPackageManager().getPackageInfo(getContext().getPackageName(), 0).versionName;
+        } catch (NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        TextView version = (TextView) findViewById(R.id.version);
+        version.setText(context.getString(R.string.version_x, versName));
 
-		TextView about = (TextView) findViewById(R.id.about);
-		about.setText("by darken\n\n" + "This app allows you to aquire Wifi- & WakeLocks from Androids Wifi- & PowerManager\n\n"
-				+ "This app is free of charge and without ads, if it helped and you would have paid for it, there is 'Donate Version' you can buy on the market.\nThere is no difference to this one.\n\n" + "Reach me under support@thedarken.eu");
-	
-		Button donate = (Button) findViewById(R.id.donate);
-		donate.setOnClickListener(new android.view.View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent marketIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=eu.thedarken.wldonate"));
-				getContext().startActivity(marketIntent);
-			}
-		});
-	}
+        setTitle(R.string.app_name);
+        setCancelable(true);
+        setCanceledOnTouchOutside(true);
+
+        TextView about = (TextView) findViewById(R.id.about);
+        about.setText(R.string.about_text);
+
+        Button donate = (Button) findViewById(R.id.donate);
+        donate.setVisibility(BuildConfig.FLAVOR.equals("free") ? View.VISIBLE : View.GONE);
+        donate.setOnClickListener(new android.view.View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent marketIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=eu.thedarken.wldonate"));
+                getContext().startActivity(marketIntent);
+            }
+        });
+    }
 
 }

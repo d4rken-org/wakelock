@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:orientation="vertical"
-    android:padding="10dp" >
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center"
+              android:orientation="vertical"
+              android:padding="10dp">
 
     <CheckBox
         android:id="@+id/autostart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Autostart on boot" />
+        android:text="@string/option_autostart_title"/>
 
     <CheckBox
         android:id="@+id/notification"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Notification" />
+        android:text="@string/option_notification_title"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Without notification, the system might kill the wakelock to free resources." />
+        android:text="@string/option_notification_desc"/>
 
     <CheckBox
         android:id="@+id/oncall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Aquire/release lock before/after call" />
+        android:text="@string/option_call_title"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="User request for screen issues during calls on GT-I9100 devices. The lock will be aquired when the device starts ringing and is released when the call ends." />
+        android:text="@string/option_call_desc"/>
 
 </LinearLayout>

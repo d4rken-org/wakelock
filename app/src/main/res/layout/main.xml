@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:orientation="vertical"
-    android:padding="15dp" >
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:padding="15dp">
 
     <LinearLayout
         android:id="@+id/levels"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="horizontal" >
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/level0"
@@ -26,7 +27,8 @@
             android:paddingTop="3dp"
             android:text="0"
             android:textColor="@color/black"
-            android:visibility="invisible" />
+            android:visibility="invisible"
+            tools:ignore="HardcodedText"/>
 
         <TextView
             android:id="@+id/level1"
@@ -41,7 +43,8 @@
             android:paddingTop="3dp"
             android:text="1"
             android:textColor="@color/black"
-            android:visibility="invisible" />
+            android:visibility="invisible"
+            tools:ignore="HardcodedText"/>
 
         <TextView
             android:id="@+id/level2"
@@ -56,7 +59,8 @@
             android:paddingTop="3dp"
             android:text="2"
             android:textColor="@color/black"
-            android:visibility="invisible" />
+            android:visibility="invisible"
+            tools:ignore="HardcodedText"/>
 
         <TextView
             android:id="@+id/level3"
@@ -71,7 +75,8 @@
             android:paddingTop="3dp"
             android:text="3"
             android:textColor="@color/black"
-            android:visibility="invisible" />
+            android:visibility="invisible"
+            tools:ignore="HardcodedText"/>
 
         <TextView
             android:id="@+id/level4"
@@ -86,7 +91,8 @@
             android:paddingTop="3dp"
             android:text="4"
             android:textColor="@color/black"
-            android:visibility="invisible" />
+            android:visibility="invisible"
+            tools:ignore="HardcodedText"/>
 
         <TextView
             android:id="@+id/level5"
@@ -101,7 +107,8 @@
             android:paddingTop="3dp"
             android:text="5"
             android:textColor="@color/black"
-            android:visibility="invisible" />
+            android:visibility="invisible"
+            tools:ignore="HardcodedText"/>
 
         <TextView
             android:id="@+id/level6"
@@ -116,7 +123,8 @@
             android:paddingTop="3dp"
             android:text="6"
             android:textColor="@color/black"
-            android:visibility="invisible" />
+            android:visibility="invisible"
+            tools:ignore="HardcodedText"/>
 
         <TextView
             android:id="@+id/level7"
@@ -131,7 +139,8 @@
             android:paddingTop="3dp"
             android:text="7"
             android:textColor="@color/black"
-            android:visibility="invisible" />
+            android:visibility="invisible"
+            tools:ignore="HardcodedText"/>
     </LinearLayout>
 
     <TextView
@@ -141,7 +150,7 @@
         android:layout_below="@+id/levels"
         android:paddingBottom="3dp"
         android:paddingTop="10dp"
-        android:text="type" />
+        tools:text="type"/>
 
     <TextView
         android:id="@+id/description"
@@ -150,14 +159,13 @@
         android:layout_below="@+id/locktype"
         android:paddingBottom="10dp"
         android:paddingTop="3dp"
-        android:text="This is a very good description, isn&apos;t it? Yes it is my friend." />
+        tools:text="This is a very good description, isn&apos;t it? Yes it is my friend."/>
 
     <ListView
         android:id="@+id/locklist"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/description"
-        android:paddingTop="5dp" >
-    </ListView>
+        android:paddingTop="5dp"/>
 
 </RelativeLayout>

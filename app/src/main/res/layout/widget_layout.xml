@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/toggle"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="@color/widgetborder"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:padding="2dp" >
+              android:id="@+id/toggle"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:background="@color/widgetborder"
+              android:gravity="center"
+              android:orientation="vertical"
+              android:padding="2dp">
 
     <TextView
         android:id="@+id/locktype"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/widgetbg"
-        android:text="None"
+        android:text="@string/locktype_none"
         android:gravity="center"
         android:padding="5dp"
-        android:textColor="#ffff0000" />
+        android:textColor="#ffff0000"/>
 
 </LinearLayout>
