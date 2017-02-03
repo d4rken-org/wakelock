@@ -43,6 +43,15 @@ public class About extends Dialog {
                 getContext().startActivity(marketIntent);
             }
         });
+
+        Button home = (Button) findViewById(R.id.home);
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent marketIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://darken.eu"));
+                getContext().startActivity(marketIntent);
+            }
+        });
     }
 
 }

@@ -13,5 +13,7 @@
     <string name="locktype_none">None</string>
     <string name="about_text"><![CDATA[This app allows you to acquire wakelocks from Androids PowerManager.\n\nIt is free of charge and without ads, if it helped and you would have paid for it, there is a \'Donate Version\' you can buy on Google Play to support my work.\n\nReach me under support@darken.eu]]></string>
     <string name="version_x">Version: %s</string>
+    <string name="action_donate">Donate</string>
+    <string name="privacy_policy">Privacy policy:\nThis app does not collect any data.</string>
 
 </resources>

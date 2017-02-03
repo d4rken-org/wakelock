@@ -10,8 +10,15 @@
         android:id="@+id/version"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/version_x"
-        android:paddingBottom="8dp"/>
+        android:paddingBottom="8dp"
+        android:text="@string/version_x"/>
+
+    <TextView
+        android:id="@+id/privacy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="8dp"
+        android:text="@string/privacy_policy"/>
 
     <TextView
         android:id="@+id/about"
@@ -20,12 +27,26 @@
         android:paddingBottom="8dp"
         android:text="@string/about"/>
 
-    <Button
-        android:id="@+id/donate"
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:paddingBottom="8dp"
-        android:text="@string/buy_donation_version"/>
+        android:paddingTop="8dp"
+        android:orientation="horizontal">
 
+        <Button
+            android:id="@+id/home"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="darken.eu"/>
+
+        <Button
+            android:id="@+id/donate"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/action_donate"/>
+    </LinearLayout>
 </LinearLayout>
