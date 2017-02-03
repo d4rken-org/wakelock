@@ -1,5 +1,9 @@
 apply plugin: 'com.android.application'
 
+def gitSha() {
+    return 'git rev-parse --short HEAD'.execute().text.trim()
+}
+
 android {
     compileSdkVersion 7
     buildToolsVersion "25.0.2"
@@ -16,6 +20,14 @@ android {
         release {
             minifyEnabled true
             proguardFiles 'proguard.cfg'
+        }
+        applicationVariants.all { variant ->
+            if (variant.buildType.name == "release") {
+                variant.outputs.each { output ->
+                    def file = output.outputFile
+                    output.outputFile = new File(file.parent, applicationId + "-v" + versionName + "-" + versionCode + "-" + gitSha() + ".apk")
+                }
+            }
         }
     }
     productFlavors {
