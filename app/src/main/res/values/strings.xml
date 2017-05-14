@@ -7,7 +7,7 @@
     <string name="option_notification_title">Notification</string>
     <string name="option_notification_desc">Without notification, the system might kill the service holding the wakelock to free resources.</string>
     <string name="option_call_title">Acquire/release lock before/after call</string>
-    <string name="option_call_desc">User request for screen issues during calls on GT-I9100 devices. The lock will be acquired when the device starts ringing and is released when the call ends.</string>
+    <string name="option_call_desc">The lock will be acquired when the device starts ringing and is released when the call ends.</string>
     <string name="buy_donation_version">Buy donation version</string>
     <string name="locktype_none">None</string>
     <string name="about_text"><![CDATA[This app allows you to acquire wakelocks from Androids PowerManager.\n\nIt is free of charge and without ads. If this app helped you, consider buying the \'Donate Version\' on Google Play.\n\nReach me under support@darken.eu]]></string>

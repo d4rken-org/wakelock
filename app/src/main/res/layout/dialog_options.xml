@@ -16,6 +16,7 @@
         android:id="@+id/notification"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="@string/option_notification_title"/>
 
     <TextView
@@ -27,6 +28,7 @@
         android:id="@+id/oncall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="@string/option_call_title"/>
 
     <TextView
