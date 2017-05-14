@@ -1,8 +1,11 @@
 apply plugin: 'com.android.application'
 
-def gitSha() {
+static def gitSha() {
     return 'git rev-parse --short HEAD'.execute().text.trim()
 }
+
+def versionRewrite = 2
+def versionRelease = 3
 
 android {
     compileSdkVersion 7
@@ -12,8 +15,8 @@ android {
         minSdkVersion 7
         targetSdkVersion 7
 
-        versionCode 9
-        versionName "2.2"
+        versionCode versionRewrite * 10000 + versionRelease
+        versionName "${versionRewrite}.${versionRelease}"
     }
 
     buildTypes {
