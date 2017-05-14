@@ -4,46 +4,29 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import eu.thedarken.wl.locks.Lock.Type;
+import java.util.List;
 
-class LockListBackend extends ArrayAdapter<Entry> {
-    private final String TAG = LockListBackend.class.getCanonicalName();
-
-    private LayoutInflater mInflater;
-    private int rowlayout;
+class LockListBackend extends BaseAdapter {
+    private final List<Entry> entries;
 
     private SharedPreferences settings;
-    private SharedPreferences.Editor prefEditor;
 
-    LockListBackend(Context c, int textViewResourceId) {
-        super(c, textViewResourceId);
-        rowlayout = textViewResourceId;
-        mInflater = LayoutInflater.from(c);
-
+    LockListBackend(Context c, List<Entry> entries) {
+        this.entries = entries;
         settings = PreferenceManager.getDefaultSharedPreferences(c);
-        prefEditor = settings.edit();
-        String current_lock = settings.getString("current_lock", Type.NO_LOCK.name());
-
-        for (Type type : Type.values()) {
-            add(new Entry(type.name()));
-            if (type.name().equals(current_lock)) getItem(getCount() - 1).isSelected = true;
-        }
-        Log.d(TAG, getCount() + " locks added, " + current_lock + " was selected");
-
     }
 
     void setSelected(int position) {
         if (position < getCount()) {
             for (int i = 0; i < getCount(); i++) getItem(i).isSelected = false;
             getItem(position).isSelected = true;
-            prefEditor.putString("current_lock", getItem(position).name).commit();
+            settings.edit().putString("current_lock", getItem(position).name).commit();
         }
     }
 
@@ -61,6 +44,21 @@ class LockListBackend extends ArrayAdapter<Entry> {
         return 0;
     }
 
+    @Override
+    public int getCount() {
+        return entries.size();
+    }
+
+    @Override
+    public Entry getItem(int i) {
+        return entries.get(i);
+    }
+
+    @Override
+    public long getItemId(int i) {
+        return entries.get(i).hashCode();
+    }
+
     static class ViewHolder {
         TextView lock;
         TextView marker;
@@ -70,13 +68,12 @@ class LockListBackend extends ArrayAdapter<Entry> {
     public View getView(final int position, View convertView, final ViewGroup parent) {
         ViewHolder holder;
         if (convertView == null) {
-            convertView = mInflater.inflate(rowlayout, null);
+            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_lockline, null);
             holder = new ViewHolder();
             holder.lock = (TextView) convertView.findViewById(R.id.lock);
             holder.marker = (TextView) convertView.findViewById(R.id.marker);
             convertView.setTag(holder);
         } else holder = (ViewHolder) convertView.getTag();
-
         holder.lock.setText(getItem(position).name);
         if (getItem(position).isSelected) holder.marker.setVisibility(View.VISIBLE);
         else holder.marker.setVisibility(View.INVISIBLE);

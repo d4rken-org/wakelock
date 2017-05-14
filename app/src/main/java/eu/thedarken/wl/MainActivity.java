@@ -7,8 +7,6 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -16,8 +14,12 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import eu.thedarken.wl.dialogs.About;
 import eu.thedarken.wl.dialogs.Options;
+import eu.thedarken.wl.locks.Lock;
 import eu.thedarken.wl.locks.LockBright;
 import eu.thedarken.wl.locks.LockDim;
 import eu.thedarken.wl.locks.LockFull;
@@ -29,8 +31,6 @@ import eu.thedarken.wl.locks.LockWifiScan;
 import eu.thedarken.wl.widget.WidgetProvider;
 
 public class MainActivity extends Activity {
-    private SharedPreferences settings;
-    private SharedPreferences.Editor prefEditor;
     private LockListBackend listbackend;
     private ListView list;
     private TextView locktype, description;
@@ -43,12 +43,19 @@ public class MainActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.activity_main);
 
-        settings = PreferenceManager.getDefaultSharedPreferences(this);
-        prefEditor = settings.edit();
         svc = new Intent(this, WakeLockService.class);
-        listbackend = new LockListBackend(this, R.layout.lockline);
+
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
+        String current_lock = settings.getString("current_lock", Lock.Type.NO_LOCK.name());
+        final List<Entry> entries = new ArrayList<Entry>();
+        for (Lock.Type type : Lock.Type.values()) {
+            final Entry entry = new Entry(type.name());
+            entries.add(entry);
+            entry.isSelected = type.name().equals(current_lock);
+        }
+        listbackend = new LockListBackend(this, entries);
 
         list = (ListView) findViewById(R.id.locklist);
         list.setAdapter(listbackend);
@@ -103,6 +110,19 @@ public class MainActivity extends Activity {
         level6 = (TextView) findViewById(R.id.level6);
         level7 = (TextView) findViewById(R.id.level7);
 
+        findViewById(R.id.options).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new Options(MainActivity.this).show();
+            }
+        });
+        findViewById(R.id.about).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new About(MainActivity.this).show();
+            }
+        });
+
         if (WakeLockService.isMyServiceRunning(MainActivity.this)) {
             setLevel(listbackend.getSelected());
             listbackend.setAquired(listbackend.getSelected(), true);
@@ -120,30 +140,13 @@ public class MainActivity extends Activity {
         if (settings.getInt("previous_version", 0) < current_version) {
             About about = new About(this);
             about.show();
-            prefEditor.putInt("previous_version", current_version).commit();
+            settings.edit().putInt("previous_version", current_version).commit();
         }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.options:
-                Options options = new Options(this);
-                options.show();
-                break;
-            case R.id.about:
-                About about = new About(this);
-                about.show();
-                break;
-        }
-        return true;
+        return false;
     }
 
     private void setLevel(int level) {

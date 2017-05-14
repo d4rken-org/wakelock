@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Wake Lock (F)</string>
+    <string name="app_name">Wake Lock</string>
     <string name="title_options">Options</string>
     <string name="about">About</string>
     <string name="option_autostart_title">Autostart on boot</string>
     <string name="option_notification_title">Notification</string>
-    <string name="option_notification_desc">Without notification, the system might kill the wakelock to free resources.</string>
+    <string name="option_notification_desc">Without notification, the system might kill the service holding the wakelock to free resources.</string>
     <string name="option_call_title">Acquire/release lock before/after call</string>
     <string name="option_call_desc">User request for screen issues during calls on GT-I9100 devices. The lock will be acquired when the device starts ringing and is released when the call ends.</string>
     <string name="buy_donation_version">Buy donation version</string>
