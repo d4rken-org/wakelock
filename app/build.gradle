@@ -8,6 +8,28 @@ def versionRewrite = 2
 def versionRelease = 3
 
 android {
+    signingConfigs {
+        release {
+        }
+    }
+    signingConfigs {
+        release {
+        }
+    }
+    def signingPropFile = new File(System.properties['user.home'], ".signing/wakelock/signing.properties")
+    if (signingPropFile.canRead()) {
+        def Properties signingProps = new Properties()
+        signingProps.load(new FileInputStream(signingPropFile))
+        signingConfigs {
+            release {
+                storeFile new File(signingProps['release.storePath'])
+                keyAlias signingProps['release.keyAlias']
+                storePassword signingProps['release.storePassword']
+                keyPassword signingProps['release.keyPassword']
+            }
+        }
+    }
+
     compileSdkVersion 7
     buildToolsVersion "25.0.2"
 
@@ -21,6 +43,7 @@ android {
 
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled true
             proguardFiles 'proguard.cfg'
         }
