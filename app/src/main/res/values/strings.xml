@@ -10,8 +10,10 @@
     <string name="option_call_desc">The lock will be acquired when the device starts ringing and is released when the call ends.</string>
     <string name="buy_donation_version">Buy donation version</string>
     <string name="locktype_none">None</string>
-    <string name="about_text"><![CDATA[This app allows you to acquire wakelocks from Androids PowerManager.\n\nIt is free of charge and without ads. If this app helped you, consider buying the \'Donate Version\' on Google Play.\n\nReach me under support@darken.eu]]></string>
+    <string name="about_text"><![CDATA[This app allows you to acquire wakelocks from Androids PowerManager.\n\nIt is free of charge and without ads.\nReach me under support@darken.eu]]></string>
+    <string name="upgrade_text">A modern version of this app is also available.</string>
     <string name="version_x">Version: %s</string>
     <string name="action_donate">Donate</string>
     <string name="privacy_policy">Privacy policy:\nThis app does not collect any data.</string>
+    <string name="action_upgrade">Upgrade</string>
 </resources>

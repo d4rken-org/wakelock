@@ -27,13 +27,19 @@
         android:paddingBottom="8dp"
         android:text="@string/about"/>
 
+    <TextView
+        android:id="@+id/upgrade_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="8dp"
+        android:text="@string/upgrade_text"/>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:paddingTop="8dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingTop="8dp">
 
         <Button
             android:id="@+id/home"
@@ -43,10 +49,10 @@
             android:text="darken.eu"/>
 
         <Button
-            android:id="@+id/donate"
+            android:id="@+id/upgrade"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/action_donate"/>
+            android:text="@string/action_upgrade"/>
     </LinearLayout>
 </LinearLayout>

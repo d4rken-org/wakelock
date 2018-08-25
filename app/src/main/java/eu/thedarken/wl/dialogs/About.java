@@ -5,11 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
+import android.os.Build;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import eu.thedarken.wl.BuildConfig;
 import eu.thedarken.wl.R;
 
 public class About extends Dialog {
@@ -34,12 +34,13 @@ public class About extends Dialog {
         TextView about = (TextView) findViewById(R.id.about);
         about.setText(R.string.about_text);
 
-        Button donate = (Button) findViewById(R.id.donate);
-        donate.setVisibility(BuildConfig.FLAVOR.equals("free") ? View.VISIBLE : View.GONE);
-        donate.setOnClickListener(new android.view.View.OnClickListener() {
+        findViewById(R.id.upgrade_hint).setVisibility(Build.VERSION.SDK_INT >= 16 ? View.VISIBLE : View.GONE);
+        Button upgrade = (Button) findViewById(R.id.upgrade);
+        upgrade.setVisibility(Build.VERSION.SDK_INT >= 16 ? View.VISIBLE : View.GONE);
+        upgrade.setOnClickListener(new android.view.View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent marketIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=eu.thedarken.wldonate"));
+                Intent marketIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=eu.thedarken.wldonate"));
                 getContext().startActivity(marketIntent);
             }
         });

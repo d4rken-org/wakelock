@@ -5,20 +5,16 @@ static def gitSha() {
 }
 
 def versionRewrite = 2
-def versionRelease = 3
+def versionRelease = 5
 
 android {
     signingConfigs {
         release {
         }
     }
-    signingConfigs {
-        release {
-        }
-    }
-    def signingPropFile = new File(System.properties['user.home'], ".signing/wakelock/signing.properties")
+    def signingPropFile = new File(System.properties['user.home'], ".appconfig/eu.thedarken.wl/signing.properties")
     if (signingPropFile.canRead()) {
-        def Properties signingProps = new Properties()
+        Properties signingProps = new Properties()
         signingProps.load(new FileInputStream(signingPropFile))
         signingConfigs {
             release {
@@ -31,7 +27,7 @@ android {
     }
 
     compileSdkVersion 7
-    buildToolsVersion "25.0.2"
+    buildToolsVersion "25.0.3"
 
     defaultConfig {
         minSdkVersion 7
